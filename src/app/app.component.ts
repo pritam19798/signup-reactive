@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
       lastName:['',Validators.required],
       email:['',[Validators.required,Validators.email]],
       password:['',Validators.required],
-      confirmpassword:['',Validators.required],
+      confirmpassword:['',[Validators.required]],
       termsAndConditions:[false,Validators.requiredTrue]
     },{
       validators:passworChecker('password','confirmpassword')
@@ -38,9 +38,9 @@ export class AppComponent implements OnInit {
   onSubmit(){
     console.log('aaaa')
     this.submited=true
-    // if(this.registerForm.invalid){
-    //   return;
-    // }
+    if(this.registerForm.invalid){
+      return;
+    }
     console.table(this.registerForm.value);
     console.table(this.registerForm);
     alert(`successfully submited ${JSON.stringify(this.registerForm.value)}`)
